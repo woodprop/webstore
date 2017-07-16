@@ -11,7 +11,7 @@ class Product extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('product_model');
-//        $this->load->helper('url_helper');
+        $this->load->helper('url_helper');
 
     }
 
@@ -19,30 +19,17 @@ class Product extends CI_Controller{
         echo "Hello from product class!";
     }
 
-    public function product_show(){
+    public function show_product($id = NULL){
 
-
-
-
-
-        //Вот это - тестовая хрень
-
-//        $data['products'] = $this->product_model->get_all_products();
-
-        if (isset($_GET['id'])) {
-            $data['products'] = $this->product_model->get_product_by_id($_GET['id']);
-        }
-        else {
-            $data['products'] = $this->product_model->get_all_products();
+        if ($id === NULL) {
+            $this->index();     //ToDo Причесать
+            die();
         }
 
+        $product = $this->product_model->get_product($id);
+        $data['product'] = $product;
 
-        // Конец теста
-
-
-
-        $data['page_title'] = "Yeah, MotherFucker!";
-//        $data['product_name'] = $this->name;
+        $data['page_title'] = "$product->name - описание товара";
 
         $this->load->view('templates/header', $data);
         $this->load->view('product/product', $data);

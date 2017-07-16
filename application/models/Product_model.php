@@ -13,8 +13,8 @@ class Product_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function get_product_by_id($id){
+    public function get_product($id){
         $query = $this->db->get_where('product', array('id' => $id));
-        return $query->result_array();
+        return $query->row();
     }
 }

@@ -14,7 +14,12 @@ class Product_model extends CI_Model {
     }
 
     public function get_product($id){
-        $query = $this->db->get_where('product', array('id' => $id));
+        $this->db->select('*');
+        $this->db->from('product');
+        $this->db->join('product_image', 'id = product_id');
+        $this->db->having('id', $id);
+        $query = $this->db->get();
         return $query->row();
     }
+
 }

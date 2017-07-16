@@ -27,8 +27,8 @@ class Product extends CI_Controller{
         }
 
         $product = $this->product_model->get_product($id);
-        $data['product'] = $product;
 
+        $data['product'] = $product;
         $data['page_title'] = "$product->name - описание товара";
 
         $this->load->view('templates/header', $data);

@@ -44,13 +44,9 @@ class Product extends CI_Controller{
 
     public function buy($id){
         $this->product_model->to_basket($id);
-        $basket = $this->product_model->get_basket();
+//        ДАЛЕЕ ИДЕТ ДЕЙСТВИЕ ПОСЛЕ ДОБАВЛЕНИЯ В КОРЗИНУ
 
-        $data['products'] = $basket;
-        $data['page_title'] = 'Корзина товаров';
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('product/basket', $data);
+        redirect('Basket');
     }
 
 }

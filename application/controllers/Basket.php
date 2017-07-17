@@ -10,6 +10,11 @@ class Basket extends CI_Controller{
     }
 
     public function index(){
+        if (empty($_SESSION['basket'])) {
+            echo "Корзина пуста";
+            die();
+        }
+
         $products = $this->product_model->get_basket();
 
         $data['page_title'] = 'Корзина';

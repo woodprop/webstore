@@ -34,9 +34,10 @@ class Product_model extends CI_Model {
     }
 
     public function get_basket(){
-        foreach ($_SESSION['basket'] as $id){
+        foreach ($_SESSION['basket'] as $id) {
             $basket[] = $this->get_product($id);
         }
         return $basket;
+
     }
 }

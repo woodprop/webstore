@@ -10,7 +10,7 @@
         <div class="col-2 text-center">
             <h5><?= $product['price']; ?> руб.</h5>
             <a class="btn btn-secondary btn-block" href="show_product/<?= $product['id']; ?>" role="button">Подробнее</a>
-            <a class="btn btn-danger btn-block" href="#" role="button">В корзину</a>
+            <a class="btn btn-danger btn-block" href="buy/<?= $product['id']; ?>" role="button">В корзину</a>
         </div>
     </div>
     <?php endforeach; ?>

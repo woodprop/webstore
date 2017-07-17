@@ -8,8 +8,10 @@ class Product_model extends CI_Model {
     }
 
     public function get_all_products(){
-
-        $query = $this->db->get('product');
+        $this->db->select('*');
+        $this->db->from('product');
+        $this->db->join('product_image', 'id = product_id');
+        $query = $this->db->get();
         return $query->result_array();
     }
 
@@ -22,4 +24,14 @@ class Product_model extends CI_Model {
         return $query->row();
     }
 
+    public function to_basket($id){
+        $_SESSION['basket'][] = $id;
+    }
+
+    public function get_basket(){
+        foreach ($_SESSION['basket'] as $id){
+            $basket[] = $this->get_product($id);
+        }
+        return $basket;
+    }
 }

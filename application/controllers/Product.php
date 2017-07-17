@@ -13,10 +13,16 @@ class Product extends CI_Controller{
         $this->load->model('product_model');
         $this->load->helper('url_helper');
 
+        session_start();
     }
 
     public function index(){
-        echo "Hello from product class!";
+        $products = $this->product_model->get_all_products();
+        $data['products'] = $products;
+        $data['page_title'] = 'Все товары';
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('product/index', $data);
     }
 
     public function show_product($id = NULL){
@@ -36,5 +42,15 @@ class Product extends CI_Controller{
 
     }
 
+    public function buy($id){
+        $this->product_model->to_basket($id);
+        $basket = $this->product_model->get_basket();
+
+        $data['products'] = $basket;
+        $data['page_title'] = 'Корзина товаров';
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('product/basket', $data);
+    }
 
 }

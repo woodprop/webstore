@@ -9,7 +9,7 @@
             </div>
             <div class="col-2 text-center">
                 <h5><?= $product->price; ?> руб.</h5>
-                <a class="btn btn-danger btn-block" href="#" role="button">Удалить</a>
+                <a class="btn btn-danger btn-block" href="del/<?= $product->id; ?>" role="button">Удалить</a>
             </div>
         </div>
     <?php endforeach; ?>

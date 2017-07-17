@@ -19,5 +19,9 @@ class Basket extends CI_Controller{
         $this->load->view('basket/index', $data);
     }
 
+    public function del($id){
+        $this->product_model->del_from_basket($id);
+        redirect('Basket/');
+    }
 
 }

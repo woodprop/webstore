@@ -46,7 +46,7 @@ class Product extends CI_Controller{
         $this->product_model->to_basket($id);
 //        ДАЛЕЕ ИДЕТ ДЕЙСТВИЕ ПОСЛЕ ДОБАВЛЕНИЯ В КОРЗИНУ
 
-        redirect('Basket');
+        redirect('Basket/');
     }
 
 }

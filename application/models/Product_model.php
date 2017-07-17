@@ -28,6 +28,11 @@ class Product_model extends CI_Model {
         $_SESSION['basket'][] = $id;
     }
 
+    public function del_from_basket($id){
+        $key = array_search($id, $_SESSION['basket']);
+        unset($_SESSION['basket'][$key]);
+    }
+
     public function get_basket(){
         foreach ($_SESSION['basket'] as $id){
             $basket[] = $this->get_product($id);
